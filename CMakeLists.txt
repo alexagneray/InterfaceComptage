@@ -28,6 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         count.h count.cpp
         generatormanager.h generatormanager.cpp
         wallet.h wallet.cpp
+        seller.h seller.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET InterfaceComptage APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -24,6 +24,7 @@ public:
 private slots:
     void on_m_btnAdd_clicked();
     void on_count_value_changed(int nNewValue);
+    void on_wallet_amount_changed(double fNewValue);
 
 private:
     Ui::MainWindow *ui;

@@ -10,14 +10,14 @@ class CWallet : public QObject
 public:
     explicit CWallet(QObject *parent = nullptr);
 private:
-    int m_nTotalAmount;
+    double m_fTotalAmount;
     QMutex m_mutTotalAmount;
 
 signals:
     void TotalAmountUpdated();
 public slots:
-    void AddMoney(int nAmount);
-    void RemoveMoney(int nAmount);
+    void AddMoney(double nAmount);
+    void RemoveMoney(double nAmount);
 };
 
 #endif // WALLET_H

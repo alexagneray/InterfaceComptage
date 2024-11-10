@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->m_txtCount->setText("0");
+    ui->m_txtWalletAmount->setText("0");
 
     // updating displayed text when count changes
     connect(&m_Count, SIGNAL(valueChanged(int)), this, SLOT(on_count_value_changed(int)));
@@ -43,4 +44,9 @@ void MainWindow::on_m_btnAdd_clicked()
 void MainWindow::on_count_value_changed(int nNewValue)
 {
     ui->m_txtCount->setText(QString::number(nNewValue));
+}
+
+void MainWindow::on_wallet_amount_changed(double fNewValue)
+{
+    ui->m_txtWalletAmount->setText(QString::number(fNewValue));
 }
