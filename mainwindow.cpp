@@ -12,10 +12,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&m_Count, SIGNAL(valueChanged(int)), this, SLOT(on_count_value_changed(int)));
 
     //  generators for tests, uncomment the section below to get prebuilt generators
-    // m_lstGenerator.push_back(new CGenerator(100, &m_Timer, &m_Count));
+    m_lstGenerator.push_back(new CGenerator(100, &m_Timer, &m_Count, 50));
     // m_lstGenerator.push_back(new CGenerator(5, &m_Timer, &m_Count));
 
-    m_Timer.setInterval(1000);
+    // defining the main timer used to trigger generators
+    m_Timer.setInterval(10);
     m_Timer.start();
 }
 
