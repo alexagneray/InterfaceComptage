@@ -24,6 +24,8 @@ public:
     CGenerator(int nIncVal, QTimer* pTimer, CCount* pCount, int nRequiredTimerCount = 100, bool bAutoStart = true);
     void SetCount(CCount* pCount);
     void Start();
+    int GetIncrementValue() const;
+    int GetRequiredTimerCount() const;
 public slots:
     void IncCount();
 signals:

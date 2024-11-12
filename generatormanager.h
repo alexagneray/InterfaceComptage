@@ -15,21 +15,23 @@ class CGeneratorManager : public QObject
 {
     Q_OBJECT
 public:
+    struct TGeneratorBox
+    {
+        const CGenerator* _pGen;
+        bool _bVisible;
+        double _fPrice;
+    };
     CGeneratorManager();
+    const QList<TGeneratorBox>& GetList() const;
 public slots:
-    void AddGenerator(const CGenerator* pGen, int nPrice);
+    void AddGenerator( double fPrice, int nIncVal,QTimer* pTimer, CCount* pCount, int nRequiredTimerCount = 100, bool bAutoStart = true);
     void UpdateGenerators(int nAccount);
     void RemoveGenerator(const CGenerator* pGen);
 signals:
     void GeneratorReady(const CGenerator* pGen);
     void ListUpdated();
 private:
-    struct TGeneratorBox
-    {
-        const CGenerator* _pGen;
-        bool _bVisible;
-        int _nPrice;
-    };
+
     QList<TGeneratorBox> m_lstGenerators;
 };
 

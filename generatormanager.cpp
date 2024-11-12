@@ -3,16 +3,17 @@
 
 CGeneratorManager::CGeneratorManager() {}
 
-void CGeneratorManager::AddGenerator(const CGenerator* pGen, int nPrice)
+void CGeneratorManager::AddGenerator(double fPrice,int nIncVal,QTimer* pTimer, CCount* pCount, int nRequiredTimerCount, bool bAutoStart )
 {
-    m_lstGenerators.push_back(TGeneratorBox{pGen, false, nPrice});
+    CGenerator* pGen = new CGenerator(nIncVal, pTimer, pCount, nRequiredTimerCount, bAutoStart);
+    m_lstGenerators.push_back(TGeneratorBox{pGen, false, fPrice});
     emit ListUpdated();
 }
 void CGeneratorManager::UpdateGenerators(int nAccount)
 {
     foreach(TGeneratorBox tBox, m_lstGenerators)
     {
-        tBox._bVisible = (tBox._nPrice >= nAccount ? true : false);
+        tBox._bVisible = (tBox._fPrice >= nAccount ? true : false);
     }
     emit ListUpdated();
 }
@@ -29,4 +30,10 @@ void CGeneratorManager::RemoveGenerator(const CGenerator* pGen)
         i++;
     }
     emit ListUpdated();
+}
+
+
+const QList<CGeneratorManager::TGeneratorBox>& CGeneratorManager::GetList() const
+{
+    return m_lstGenerators;
 }

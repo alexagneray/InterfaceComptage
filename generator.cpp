@@ -46,3 +46,13 @@ void CGenerator::SetCount(CCount* pCount)
 {
     m_pCount = pCount;
 }
+
+int CGenerator::GetIncrementValue() const
+{
+    return m_nIncVal;
+}
+
+int CGenerator::GetRequiredTimerCount() const
+{
+    return m_nRequiredTimerCount;
+}
